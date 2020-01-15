@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        .active{padding: 25px 30px 50px 35px;
+                background-color: rgba(235, 203, 134, 0.7);
+                border-bottom: 2px solid rgb(230, 137, 67);
+                border-radius: 15%;}
+        .btactive{padding: 55px 55px 55px 55px;
+                background-color: rgba(235, 203, 134, 0.7);
+                border-bottom: 2px solid rgb(230, 137, 67);
+                border-radius: 15%;}
+    </style>
+</head>
+<body>
+    <div id="app" v-bind:class="{ active: ys }" style="margin:200 200;text-align:center;">
+        <h1 v-text="message"></h1>
+        <h2 v-text="asd"></h2>
+        <p v-html="wangzhi"></p>
+    </div>
+    <div id="bt" v-bind:class="{ btactive: btys }" style="margin:200 200;text-align:center;">
+        <input type="button" value="点击事件1" v-on:click="djsj1">
+        <input type="button" value="双击事件1" @dblclick="sjsj1">
+        <p v-on:click="djzj">{{ sum }}</p>
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            asd: '标题2',
+            wangzhi:"<a href='https://github.com/XiaoHeiOvO/Html'>Guthub主页</a>",
+            ys: true
+        }
+    });
+    var bt = new Vue({
+        el: '#bt',
+        data: {
+            sum: '点击增加',
+            btys: true
+        },
+        methods: {
+            djsj1:function(){
+                alert("点击弹出窗口");
+            },
+            sjsj1:function(){
+               alert("双击弹出窗口");
+            },
+            djzj:function(){
+                this.sum+="666"
+            }
+        }
+    })
+    </script>
+</body>
+</html>
